@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://challengeradarit.herokuapp.com/",
+  baseURL: "https://challengeradarit.herokuapp.com",
   timeout: 5000,
 });
 

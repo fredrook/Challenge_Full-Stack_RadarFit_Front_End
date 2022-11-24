@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import { Container, Form } from "./ModalCreateNewProductCSS";
+import { Container, Form } from "./ModalEditProductCSS";
 import { useForm } from "react-hook-form";
 import { IProduct } from "../../Interfaces/IProduct";
 
-const ModalEditProduct = () => {
+const ModalCreateNewProduct = () => {
   const { modalIn, setModalIn, CreateProduct } = useContext(AuthContext);
+  console.log("ModalCreateNewProductCreateProduct", CreateProduct)
 
   const { register, handleSubmit } = useForm<IProduct>({});
-  
+
   return (
     <>
       {modalIn && (
@@ -54,7 +55,7 @@ const ModalEditProduct = () => {
             <div className="Div3">
               <button
                 className="BtnAdd"
-                type="submit"
+                type="button"
                 onClick={() => {
                   setModalIn(false);
                 }}
@@ -72,4 +73,4 @@ const ModalEditProduct = () => {
   );
 };
 
-export default ModalEditProduct;
+export default ModalCreateNewProduct;

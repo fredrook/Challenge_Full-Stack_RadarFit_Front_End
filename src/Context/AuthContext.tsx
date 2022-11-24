@@ -1,34 +1,48 @@
-import {  createContext, useState } from "react";
-/* import { AxiosError } from "axios"; */
+import { createContext, useEffect, useState } from "react";
 import { IAuthContext } from "../Interfaces/IAuthContext";
+/* import { AxiosError } from "axios"; */
 /* import { IError } from "../Interfaces/IError"; */
 import { IProduct } from "../Interfaces/IProduct";
 import { IProviderPropsChildren } from "../Interfaces/IProviderPropsChildren";
-/* import api from "../Api/api"; */
-
+import api from "../Api/api";
+import { IProductForm } from "../Interfaces/IProductForm";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 const AuthProvider = ({ children }: IProviderPropsChildren) => {
   const [product, setProduct] = useState<IProduct>({} as IProduct);
-  
+  /*   console.log("Contexxxt", product) */
+
   const [modalIn, setModalIn] = useState(false);
 
-  const [products, setProducts] = useState<IProduct[]>([] as IProduct[]);
+  const [products, setProducts] = useState<IProductForm[]>(
+    [] as IProductForm[]
+  );
 
-  /* const CreateProduct = (data: IProduct) => {
-    api
-      .post<IProduct>("/produtos", data)
-      .then((res) => {
-        console.log("CONSOLE LOG do Response do Registro", res);
-        const novaTech = [...user.techs, res.data];
-        setProduct({ ...user, techs: novaTech });
-        setModalIn(false);
-      })
-      .catch((error: AxiosError<IError>) => {
+  const CreateProduct = async (data: IProduct) => {
+    console.log("Data", data);
+    try {
+      const newProduct = await api.post<IProductForm>("/produtos", data);
+      /* console.log("*****", newProduct); */
+      setProducts([...products, newProduct.data]);
+      /* console.log(newProduct.data); */
+      setModalIn(false);
+    } catch (error) {
+      console.log("CON-LOG CATCH ERROR CreateProduct", error);
+    }
+  };
+
+  useEffect(() => {
+    const ListAllProducts = async () => {
+      try {
+        const renderListSearch = await api.get<IProductForm[]>("/produtos");
+        setProducts(renderListSearch.data);
+      } catch (error) {
         console.log("CON-LOG CATCH ERROR CreateProduct", error);
-      });
-  }; */
+      }
+    }
+    ListAllProducts()
+  }, []);
 
   /* const UpdatedAllDadosVeicle = async (data: ITechs, id: string) => {
     setModalIn(true);
@@ -47,15 +61,13 @@ const AuthProvider = ({ children }: IProviderPropsChildren) => {
       })
       .finally(() => setModalIn(false)); */
 
-      /* const DeleteProductVeicle = (id: string) => {
-        setModalIn(true);
-    
-        api.delete<ITechs>(`/users/techs/${id}`)
+  /* const DeleteProductVeicle = (id: string) => {
+            api.delete<IProduct>(`/produto/${id}`)
           .then((res) => {
             console.log("CONSOLE LOG do Response do Registro", res);
     
-            const newTechs = user.techs.filter((elem) => elem.id !== id);
-            setProduct({ ...user, techs: newTechs })})
+            const newProduct = products.filter((elem) => elem.id !== id);
+            setProduct({ ...products , newProduct})
           .catch((error: AxiosError<IError>) => {
             console.log("CON-LOG CATCH ERROR DeleteProductVeicle", error);
           })
@@ -67,9 +79,10 @@ const AuthProvider = ({ children }: IProviderPropsChildren) => {
       value={{
         product,
         modalIn,
+        products,
         setModalIn,
-        /* CreateProduct,
-        UpdatedAllDadosVeicle,
+        CreateProduct,
+        /* UpdatedAllDadosVeicle,
         DeleteProductVeicle */
       }}
     >
