@@ -9,15 +9,20 @@ export const DivContainer = styled.div`
   height: 90%;
   max-height: 100vh;
   margin: 0 auto;
-  margin-bottom: 68px;
+  margin-bottom: 72px;
 
-  @media screen and (max-width: 2560px) {
+  @media screen and (min-width: 2560px) {
     margin-bottom: 68px;
   }
 
   @media screen and (max-width: 1440px) {
-    margin-bottom: 58px;
+    margin-bottom: 62px;
   }
+
+  @media screen and (max-width: 1024px) {
+    margin-bottom: 65px;
+  }
+
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -27,7 +32,6 @@ export const DivContainer = styled.div`
     font-size: 18px;
     font-weight: 500;
     color: var(--color-grey1);
-    margin-bottom: 3%;
   }
 `;
 

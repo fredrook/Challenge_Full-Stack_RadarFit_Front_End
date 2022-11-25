@@ -3,7 +3,7 @@ import { AuthContext } from "../../Context/AuthContext";
 import { DivContainer, TagDiv, TagDivFooter } from "./DetailsCardCSS";
 
 const DetailsCard = () => {
-  const { setModalInEdit /* DeleteProductVeicle */ } = useContext(AuthContext)
+  const { setModalInEdit /* DeleteProduct*/ } = useContext(AuthContext)
 
   return (
     <DivContainer>
@@ -39,7 +39,7 @@ const DetailsCard = () => {
             </svg>
             Editar
           </button>
-          <button className="tagButtonClose" /* onClick={() => DeleteProductVeicle(id)} */>
+          <button className="tagButtonClose" /* onClick={() => DeleteProduct(id)} */>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

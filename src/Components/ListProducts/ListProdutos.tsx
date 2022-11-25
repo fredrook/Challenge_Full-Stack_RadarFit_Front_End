@@ -10,6 +10,7 @@ const ListProdutos = ({ values }: any) => {
     <DivContainer>
       <ContainerUl>
        <h2 className="titulo">Lista de produtos</h2>
+       <div className="global">
         {products.map((product, index) => (
           <li className="tagLi" key={index!}>
             <h2>{product!.produto!}</h2>
@@ -33,6 +34,7 @@ const ListProdutos = ({ values }: any) => {
             </button>
           </li>
         ))}
+        </div>
       </ContainerUl>
       <DetailsCard />
     </DivContainer>

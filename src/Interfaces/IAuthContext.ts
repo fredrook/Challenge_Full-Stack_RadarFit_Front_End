@@ -9,6 +9,5 @@ export interface IAuthContext {
   setModalInEdit: Dispatch<SetStateAction<boolean>>;
   setModalIn: Dispatch<SetStateAction<boolean>>;
   createProduct: (data: IProduct) => void;
- /*  UpdatedAllDadosProduct: (data: "PassarTipagemAqui", id: string) => void; */
-  DeleteProduct: (id: string) => void;
+  /* DeleteProduct: (id: string) => void; */
 }
