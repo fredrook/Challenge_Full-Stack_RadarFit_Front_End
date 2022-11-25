@@ -21,15 +21,14 @@ export const ContainerUl = styled.ul`
   max-width: 48%;
   height: 90%;
   min-width: 318px;
-  gap: 2.5%;
   max-height: 750px;
   overflow-y: scroll;
 
-  .titulo {
-    margin-top: 1%;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--color-grey1);
+  @media screen and (max-width: 1440px) {
+    max-width: 51%;
+    position: relative;
+    top: 1%;
+    right: 1%;
   }
 
   @media screen and (max-width: 768px) {
@@ -44,6 +43,13 @@ export const ContainerUl = styled.ul`
     position: relative;
     top: 0%;
     right: 7%;
+  }
+
+  .titulo {
+    margin-top: 1%;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-grey1);
   }
 
   .tagLi {

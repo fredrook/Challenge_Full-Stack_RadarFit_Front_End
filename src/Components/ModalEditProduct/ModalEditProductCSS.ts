@@ -11,7 +11,7 @@ export const Container = styled.div`
   background-color: rgba(45, 63, 70, 0.8);
 `;
 
-export const Form = styled.nav`
+export const Form = styled.form`
   position: relative;
 
   display: flex;
@@ -143,17 +143,21 @@ export const Form = styled.nav`
     border: none;
     background-color: transparent;
 
+    @media screen and (min-width: 2560px) {
+      margin-top: -10px;
+    }
+
     @media screen and (max-width: 2560px) {
-        margin-top: -5px;
-      }
+      margin-top: 0px;
+    }
 
     @media screen and (max-width: 1440px) {
-        margin-top: 20px;
-      }
+      margin-top: 20px;
+    }
 
     @media screen and (max-width: 768px) {
-        justify-content: center;
-      }
+      justify-content: center;
+    }
 
     .BtnAdd {
       margin-right: 2%;
