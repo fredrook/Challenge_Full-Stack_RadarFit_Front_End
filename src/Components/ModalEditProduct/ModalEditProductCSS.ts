@@ -18,7 +18,7 @@ export const Form = styled.nav`
   flex-direction: column;
   align-items: flex-start;
 
-  width: 800px;
+  width: 50%;
   height: 400px;
 
   background: var(--color-grey-fundo);
@@ -143,6 +143,18 @@ export const Form = styled.nav`
     border: none;
     background-color: transparent;
 
+    @media screen and (max-width: 2560px) {
+        margin-top: -5px;
+      }
+
+    @media screen and (max-width: 1440px) {
+        margin-top: 20px;
+      }
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+      }
+
     .BtnAdd {
       margin-right: 2%;
       width: 100px;
@@ -150,7 +162,11 @@ export const Form = styled.nav`
       border: none;
       background-color: var(--color-grey1);
       color: var(--color-white);
-      font-size: 18px;
+      font-size: 16px;
+
+      @media screen and (max-width: 320px) {
+        font-size: 12px;
+      }
 
       :hover {
         background-color: var(--color-green-text);
@@ -163,6 +179,10 @@ export const Form = styled.nav`
       background-color: var(--color-grey1);
       color: var(--color-white);
       font-size: 18px;
+
+      @media screen and (max-width: 320px) {
+        font-size: 12px;
+      }
 
       :hover {
         background-color: var(--color-green-text);

@@ -3,7 +3,7 @@ import { AuthContext } from "../../Context/AuthContext";
 import { Button, ContainerDiv, TagH2 } from "./CreateNewProductCSS";
 
 const CreateNewProduct = () => {
-  const { setModalIn} = useContext(AuthContext);
+  const { setModalIn } = useContext(AuthContext);
 
   return (
     <ContainerDiv>

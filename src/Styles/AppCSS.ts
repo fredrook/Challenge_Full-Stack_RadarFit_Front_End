@@ -6,5 +6,5 @@ export const AppDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  min-height: 100vh;
+  max-height: 100vh;
 `;

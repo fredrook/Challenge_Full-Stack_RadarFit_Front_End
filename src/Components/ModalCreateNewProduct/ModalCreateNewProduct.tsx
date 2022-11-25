@@ -5,18 +5,21 @@ import { useForm } from "react-hook-form";
 import { IProduct } from "../../Interfaces/IProduct";
 
 const ModalEditProduct = () => {
-  const { modalIn, setModalIn, CreateProduct } = useContext(AuthContext);
+  const { modalIn, setModalIn, createProduct } = useContext(AuthContext);
 
-  const { register, handleSubmit } = useForm<IProduct>({});
-  
+  const { register, handleSubmit, reset } = useForm<IProduct>({});
+
+  const handleSubmidData = (data: IProduct) => {
+    createProduct(data)
+    reset()
+    setModalIn(false)
+  }
+
   return (
     <>
       {modalIn && (
         <Container>
-          <Form
-            onClick={(event) => event.stopPropagation()}
-            onSubmit={handleSubmit((data) => CreateProduct(data))}
-          >
+          <Form onSubmit={handleSubmit(handleSubmidData)}>
             <h2 className="H2">Novo Produto</h2>
             <div className="Div1">
               <div className="SubDiv1">
@@ -48,17 +51,11 @@ const ModalEditProduct = () => {
                 type="text"
                 placeholder="Descrição do produto!"
                 id="descricao"
-                {...register("descricao")}  
+                {...register("descricao")}
               />
             </div>
             <div className="Div3">
-              <button
-                className="BtnAdd"
-                type="submit"
-                onClick={() => {
-                  setModalIn(false);
-                }}
-              >
+              <button className="BtnAdd" type="submit">
                 ADD
               </button>
               <button onClick={() => setModalIn(false)} className="BtnClose">

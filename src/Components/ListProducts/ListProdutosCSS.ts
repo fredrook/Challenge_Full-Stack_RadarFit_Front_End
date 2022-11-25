@@ -4,9 +4,14 @@ export const DivContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 94%;
+  width: 96%;
   height: 100%;
+  max-height: 100vh;
   margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContainerUl = styled.ul`
@@ -16,12 +21,29 @@ export const ContainerUl = styled.ul`
   max-width: 48%;
   height: 90%;
   min-width: 318px;
-  gap: 1.5%;
+  gap: 2.5%;
+  max-height: 750px;
+  overflow-y: scroll;
 
-  h2 {
+  .titulo {
+    margin-top: 1%;
     font-size: 18px;
     font-weight: 500;
     color: var(--color-grey1);
+  }
+
+  @media screen and (max-width: 768px) {
+    max-width: 94%;
+    position: relative;
+    top: 0%;
+    right: 3%;
+  }
+
+  @media screen and (max-width: 320px) {
+    max-width: 94%;
+    position: relative;
+    top: 0%;
+    right: 7%;
   }
 
   .tagLi {
@@ -31,7 +53,7 @@ export const ContainerUl = styled.ul`
     width: 100%;
     height: 110px;
     background-color: var(--color-white);
-
+    
     h2 {
       position: relative;
       top: 7%;
@@ -83,4 +105,3 @@ export const ContainerUl = styled.ul`
     }
   }
 `;
-

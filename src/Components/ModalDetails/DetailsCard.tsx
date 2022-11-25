@@ -1,9 +1,9 @@
-/* import { useContext } from "react";
-import { AuthContext } from "../../Context/AuthContext"; */
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 import { DivContainer, TagDiv, TagDivFooter } from "./DetailsCardCSS";
 
 const DetailsCard = () => {
-  /* const { DeleteProductVeicle } = useContext(AuthContext) */
+  const { setModalInEdit /* DeleteProductVeicle */ } = useContext(AuthContext)
 
   return (
     <DivContainer>
@@ -26,7 +26,7 @@ const DetailsCard = () => {
           superior para colocar o alarme em modo soneca.
         </p>
         <TagDivFooter>
-          <button className="tagButtonEdit">
+          <button className="tagButtonEdit" onClick={() => setModalInEdit(true)} type="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

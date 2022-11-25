@@ -4,21 +4,20 @@ import { Container, Form } from "./ModalEditProductCSS";
 import { useForm } from "react-hook-form";
 import { IProduct } from "../../Interfaces/IProduct";
 
-const ModalCreateNewProduct = () => {
-  const { modalIn, setModalIn, CreateProduct } = useContext(AuthContext);
-  console.log("ModalCreateNewProductCreateProduct", CreateProduct)
+const ModalEditProduct = () => {
+  const { modalInEdit, setModalInEdit, /* EditProduct */ } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm<IProduct>({});
 
   return (
     <>
-      {modalIn && (
+      {modalInEdit && (
         <Container>
           <Form
-            onClick={(event) => event.stopPropagation()}
-            onSubmit={handleSubmit((data) => CreateProduct(data))}
+            /* onClick={(event) => event.stopPropagation()}
+            onSubmit={handleSubmit((data) => EditProduct(data))} */
           >
-            <h2 className="H2">Novo Produto</h2>
+            <h2 className="H2">Editar Produto</h2>
             <div className="Div1">
               <div className="SubDiv1">
                 <label className="tagLabel" htmlFor="produto">
@@ -57,12 +56,12 @@ const ModalCreateNewProduct = () => {
                 className="BtnAdd"
                 type="button"
                 onClick={() => {
-                  setModalIn(false);
+                  setModalInEdit(false);
                 }}
               >
-                ADD
+                CONFIRMAR
               </button>
-              <button onClick={() => setModalIn(false)} className="BtnClose">
+              <button onClick={() => setModalInEdit(false)} className="BtnClose">
                 FECHAR
               </button>
             </div>
@@ -73,4 +72,4 @@ const ModalCreateNewProduct = () => {
   );
 };
 
-export default ModalCreateNewProduct;
+export default ModalEditProduct;

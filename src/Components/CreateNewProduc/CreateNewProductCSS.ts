@@ -8,7 +8,6 @@ export const ContainerDiv = styled.div`
   width: 93%;
   height: 70px;
   margin-top: 2%;
-  margin-bottom: 1%;
   background-color: var(--color-grey);
   border-bottom: 1px solid var(--color-grey2);
 `;

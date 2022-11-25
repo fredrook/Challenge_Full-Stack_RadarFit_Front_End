@@ -6,25 +6,40 @@ export const DivContainer = styled.div`
   justify-content: flex-end;
   flex-direction: column;
   width: 50%;
-  height: 100%;
-  margin-left: 1%;
+  height: 90%;
+  max-height: 100vh;
+  margin: 0 auto;
+  margin-bottom: 68px;
+
+  @media screen and (max-width: 2560px) {
+    margin-bottom: 68px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    margin-bottom: 58px;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 
   h2 {
     font-size: 18px;
     font-weight: 500;
     color: var(--color-grey1);
-    margin-bottom: 2%;
+    margin-bottom: 3%;
   }
 `;
 
 export const TagDiv = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
   max-width: 100%;
-  height: 90%;
   min-width: 318px;
+  height: 90%;
+  max-height: 90%;
   background-color: var(--color-grey-fundo2);
 
   .tagH2 {
@@ -39,7 +54,6 @@ export const TagDiv = styled.div`
     font-weight: 500;
     color: var(--color-dark-text);
     margin-left: 2%;
-    margin-bottom: -7%;
   }
 
   .tagSpanValor {
@@ -69,7 +83,6 @@ export const TagDivFooter = styled.div`
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid var(--color-grey1);
-  
 
   .tagButtonEdit {
     display: flex;

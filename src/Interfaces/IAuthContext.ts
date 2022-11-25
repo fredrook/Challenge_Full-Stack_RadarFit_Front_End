@@ -3,12 +3,12 @@ import { IProduct } from "./IProduct";
 import { IProductForm } from "./IProductForm";
 
 export interface IAuthContext {
-  product: IProduct;
-  modalIn: boolean;
   products: IProductForm[];
+  modalIn: boolean;
+  modalInEdit: boolean;
+  setModalInEdit: Dispatch<SetStateAction<boolean>>;
   setModalIn: Dispatch<SetStateAction<boolean>>;
-  CreateProduct: (data: IProduct) => void;
-/*   ListAllProducts: ( ) => void; */
- /* UpdatedAllDadosVeicle: (data: "PassarTipagemAqui", id: string) => void;
-  DeleteProductVeicle: (id: string) => void; */
+  createProduct: (data: IProduct) => void;
+ /*  UpdatedAllDadosProduct: (data: "PassarTipagemAqui", id: string) => void; */
+  DeleteProduct: (id: string) => void;
 }

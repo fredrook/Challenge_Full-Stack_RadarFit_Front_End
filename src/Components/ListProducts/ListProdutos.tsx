@@ -8,8 +8,8 @@ const ListProdutos = ({ values }: any) => {
 
   return (
     <DivContainer>
-      {/*  <h2>Lista de produtos</h2> */}
       <ContainerUl>
+       <h2 className="titulo">Lista de produtos</h2>
         {products.map((product, index) => (
           <li className="tagLi" key={index!}>
             <h2>{product!.produto!}</h2>

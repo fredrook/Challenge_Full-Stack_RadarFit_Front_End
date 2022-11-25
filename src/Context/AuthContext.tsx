@@ -10,22 +10,19 @@ import { IProductForm } from "../Interfaces/IProductForm";
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 const AuthProvider = ({ children }: IProviderPropsChildren) => {
-  const [product, setProduct] = useState<IProduct>({} as IProduct);
-  /*   console.log("Contexxxt", product) */
-
-  const [modalIn, setModalIn] = useState(false);
-
   const [products, setProducts] = useState<IProductForm[]>(
     [] as IProductForm[]
   );
+  const [modalIn, setModalIn] = useState(false);
+  const [modalInEdit, setModalInEdit] = useState(false);
 
-  const CreateProduct = async (data: IProduct) => {
-    console.log("Data", data);
+  const createProduct = async (data: IProduct) => {
+    console.log("Data****", data);
     try {
       const newProduct = await api.post<IProductForm>("/produtos", data);
-      /* console.log("*****", newProduct); */
+      console.log("*****", newProduct);
       setProducts([...products, newProduct.data]);
-      /* console.log(newProduct.data); */
+      console.log(newProduct.data);
       setModalIn(false);
     } catch (error) {
       console.log("CON-LOG CATCH ERROR CreateProduct", error);
@@ -40,50 +37,47 @@ const AuthProvider = ({ children }: IProviderPropsChildren) => {
       } catch (error) {
         console.log("CON-LOG CATCH ERROR CreateProduct", error);
       }
-    }
-    ListAllProducts()
+    };
+    ListAllProducts();
   }, []);
 
-  /* const UpdatedAllDadosVeicle = async (data: ITechs, id: string) => {
-    setModalIn(true);
+ /*  const UpdatedAllDadosProduct = async (data: IProductForm, id: string) => {
+    try {
+      const SelectProductForFilter = products.filter((elem) => elem.id !== id);
 
-     const SelectTechnologyForFilter = user.techs.filter((elem) => elem.id !== id);
+      await api.put<IProductForm[]>(`/produtos/${id}`, data);
 
-    await api
-      .put<ITechs>(`/users/techs/${id}`, data)
-      .then((res) => {
-        console.log("CONSOLE LOG do Response do Registro", res);
+      const newTechs = [...SelectProductForFilter, data];
+      setProducts([ ...products, products: newTechs ]);
 
-        const newTechs = [...SelectTechnologyForFilter, res.data];
-        setProduct({ ...user, techs: newTechs })})
-      .catch((error: AxiosError<IError>) => {
-        console.log("CON-LOG CATCH ERROR UpdatedAllDadosVeicle", error);
-      })
-      .finally(() => setModalIn(false)); */
+    } catch (error) {
+      console.log("CON-LOG CATCH ERROR DeleteProduct", error);
+    }
+  }; */
 
-  /* const DeleteProductVeicle = (id: string) => {
-            api.delete<IProduct>(`/produto/${id}`)
-          .then((res) => {
-            console.log("CONSOLE LOG do Response do Registro", res);
-    
-            const newProduct = products.filter((elem) => elem.id !== id);
-            setProduct({ ...products , newProduct})
-          .catch((error: AxiosError<IError>) => {
-            console.log("CON-LOG CATCH ERROR DeleteProductVeicle", error);
-          })
-          .finally(() => setModalIn(false));
-      }; */
+  const DeleteProduct = async (id: string) => {
+    try {
+      await api.delete<IProductForm[]>(`/produto/${id}`);
+
+      const newProduct = await products.filter((elem) => elem.id !== id);
+
+      setProducts(newProduct);
+    } catch (error) {
+      console.log("CON-LOG CATCH ERROR DeleteProduct", error);
+    }
+  };
 
   return (
     <AuthContext.Provider
       value={{
-        product,
-        modalIn,
         products,
+        modalIn,
         setModalIn,
-        CreateProduct,
-        /* UpdatedAllDadosVeicle,
-        DeleteProductVeicle */
+        modalInEdit,
+        setModalInEdit,
+        createProduct,
+        /* UpdatedAllDadosProduct, */
+        DeleteProduct,
       }}
     >
       {children}
